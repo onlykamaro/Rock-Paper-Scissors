@@ -21,6 +21,35 @@ function playRound (playerSelection, computerSelection) { // I create a function
     return playerPoint;     // Return (to use later this function) player point count
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game(roundTotal = 5) {
+    let roundsPlayed = 0;
+    let playerScore = 0;
+
+    while (roundsPlayed <= roundTotal) {
+        let playerSelection = prompt('Rock, Paper or Scissors?')
+        playerSelection = playerSelection.toLowerCase();
+        if ((playerSelection != 'rock') &&
+            (playerSelection != 'paper') && 
+            (playerSelection != 'scissors'))
+        { continue }
+
+        let computerSelection = getComputerChoice();
+        if (playerSelection == computerSelection) {
+            console.log(`It's a draw! You both chose ${playerSelection}`)
+            continue
+        }
+
+        playerScore += playRound(playerSelection, computerSelection)
+        roundsPlayed++
+    }
+
+    if (playerScore > (roundsPlayed / 2)) {
+        console.log(`You won ${playerScore} out of ${roundsPlayed} rounds. YOU WIN!!!`)
+    } else if (playerScore == (roundsPlayed / 2)) {
+        console.log(`You won ${playerScore} out of ${roundsPlayed} rounds. It's a draw`)
+    } else {
+        console.log(`You won ${playerScore} out of ${roundsPlayed} rounds. You lose!`)
+    }
+}
+
+
