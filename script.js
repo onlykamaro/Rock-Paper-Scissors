@@ -13,8 +13,14 @@ function playRound (playerSelection, computerSelection) { // I create a function
     {   
         playerPoint = 1;    // If the games outcome is either one of those 3 above then player receives 1 point
         console.log(`You win! ${playerSelection} is stronger than ${computerSelection}`)    // If player wins show in console the outcome
+    } else if (playerSelection == computerSelection) {
+        console.log(`It's a draw between ${playerSelection} and ${computerSelection}`)
     } else {
         console.log(`You lose! ${computerSelection} is stronger than ${playerSelection}`)   // If player loses show in console this outcome
     }
     return playerPoint;     // Return (to use later this function) player point count
 }
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
